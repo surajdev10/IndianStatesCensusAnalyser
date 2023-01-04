@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace IndianStatesCensusAnalyser
 {
-    internal class StateCensusAndCodeException:Exception
+    public class StateCensusAndCodeException:Exception
     {
         public enum ExceptionType
         {
-
+            FILE_INCORRECT
         }
-
-        public StateCensusAndCodeException(ExceptionType exceptionType, string message): base(message) 
+        public ExceptionType Type;
+        public StateCensusAndCodeException(ExceptionType exceptionType, string message) : base(message)
         {
-
+            Type = exceptionType;
         }
     }
 }
