@@ -10,7 +10,6 @@ namespace IndianStatesCensusAnalyser
 {
     internal class StateCode
     {
-
         public void ReadStateCodeData(string filepath)
         {
             using (var reader = new StreamReader(filepath))
