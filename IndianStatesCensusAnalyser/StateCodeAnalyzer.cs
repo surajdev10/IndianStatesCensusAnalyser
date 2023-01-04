@@ -1,20 +1,17 @@
 ﻿using CsvHelper;
 using System;
 using System.Collections.Generic;
-using System.Formats.Asn1;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-
 namespace IndianStatesCensusAnalyser
 {
-    public class CSVStateCensus
+    public  class StateCodeAnalyzer
     {
-        public  int ReadStateCensusData(string filepath)
+
+        public int ReadStateCensusData(string filepath)
         {
             using (var reader = new StreamReader(filepath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -22,9 +19,8 @@ namespace IndianStatesCensusAnalyser
                 var records = csv.GetRecords<StateCensusData>().ToList();
                 foreach (var data in records)
                 {
-
+                    //Console.WriteLine($"State name: {data.State} Population: {data.Population} AreaInSqKm :{data.AreaInSqKm} DensityPerSqKm: {data.DensityPerSqKm}");
                     Console.WriteLine(data);
-                    // Console.WriteLine(data.State + " " + data.Population + " " + data.DensityPerSqKm + " " + data.AreaInSqKm);
                 }
                 return records.Count - 1;
             }
