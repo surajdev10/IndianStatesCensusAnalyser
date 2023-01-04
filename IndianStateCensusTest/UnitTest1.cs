@@ -9,6 +9,7 @@ namespace IndianStateCensusTest
         public static string stateCensusCSVFilePath = @"C:\Users\suraj\source\repos\IndianStatesCensusAnalyser\IndianStatesCensusAnalyser\file\StateCensusData.csv";
         public static string stateCensusWrongCSVFilePath = @"C:\Users\suraj\source\repos\IndianStatesCensusAnalyser\IndianStatesCensusAnalyser\file\StateCensusData.csv";
         public static string stateCensusIncorrectCSVFileType = @"C:\Users\suraj\source\repos\IndianStatesCensusAnalyser\IndianStatesCensusAnalyser\file\StateCensus.txt";
+        public static string stateCensusWrongDelimeterCSVFileType = @"C:\Users\suraj\source\repos\IndianStatesCensusAnalyser\IndianStatesCensusAnalyser\file\WrongDelimeterStateCensusData.csv";
 
         [Test]
 
@@ -49,6 +50,20 @@ namespace IndianStateCensusTest
             catch (StateCensusAndCodeException ex)
             {
                 Assert.AreEqual(ex.Message, "Incorrect FileType");
+            }
+        }
+
+        [Test]
+        public void GivenStateCensusDataDelimeterIncorrect_WhenAnalyzed_ShouldReturnException()
+        {
+            StateCodeAnalyzer stateCensusAnalyzer = new StateCodeAnalyzer();
+            try
+            {
+                int record = stateCensusAnalyzer.ReadStateCensusData(stateCensusWrongDelimeterCSVFileType);
+            }
+            catch (StateCensusAndCodeException ex)
+            {
+                Assert.AreEqual(ex.Message, "Delimeter Incorrect");
             }
         }
 
